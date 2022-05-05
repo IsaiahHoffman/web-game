@@ -1,6 +1,6 @@
-// if (process.env.NODE_ENV !== 'production') {
-//     require('dotenv').config()
-// }
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
 
 const express = require('express')
 const app = express()
@@ -18,7 +18,7 @@ app.use(expressLayouts)
 app.use(express.static('public'))
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://idhoffman:IHbren0818!!@cluster0.2ijbu.mongodb.net/trial2?retryWrites=true&w=majority";
+const uri = process.env.NODE_ENV
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 client.connect(err => {
   const collection = client.db("test").collection("devices");
