@@ -25,7 +25,6 @@ client.connect(err => {
 });
 
 
-
 const indexRouter = require("./routes/index")
 app.use('/', indexRouter)
 

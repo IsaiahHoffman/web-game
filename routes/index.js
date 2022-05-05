@@ -5,6 +5,7 @@ const Player = require("../models/player")
 const router = express.Router()
 const movement = require('../models/player')
 const userInfo = require("../models/userInfo")
+mongoose.connect(process.env.DATABASE_URL)
 
 let a = new Player(10, 10)
 let pos = a.position()
@@ -13,7 +14,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/CreateAccount', (req, res) => {
-    res.render('createAccount.ejs', {userInfo: new userInfo()})
+    res.render('createAccount.ejs', { userInfo: new userInfo() })
 })
 
 router.post('/CreateAccount', async (req, res) => {
@@ -23,7 +24,7 @@ router.post('/CreateAccount', async (req, res) => {
         password: req.body.password
     })
     try {
-        const newUser = await user.save()
+        await user.save()
         res.render('index')
     } catch (error) {
         console.log(error)
