@@ -5,6 +5,10 @@ const Player = require("../models/player")
 const router = express.Router()
 const movement = require('../models/player')
 const userInfo = require("../models/userInfo")
+
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
 mongoose.connect(process.env.DATABASE_URL)
 
 let a = new Player(10, 10)
