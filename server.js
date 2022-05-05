@@ -17,9 +17,9 @@ app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 app.use(express.static('public'))
 
-//const url = require('lock')
+const url = require('./lock')
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://idhoffman:IHbren0818!!@cluster0.2ijbu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const uri = url
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 client.connect(err => {
   const collection = client.db("test").collection("devices");
@@ -28,11 +28,6 @@ client.connect(err => {
 });
 
 
-const mongoose = require('mongoose')
-mongoose.connect(process.env.DATABASE_URL)
-const db = mongoose.connection
-db.on('error', error => console.error(error))
-db.once('open', () => console.log('Connected to Mongoose'))
 
 const indexRouter = require("./routes/index")
 app.use('/', indexRouter)
