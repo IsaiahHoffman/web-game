@@ -12,7 +12,6 @@ app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 app.use(express.static('public'))
 
-
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://idhoffman:IHbren0818!!@cluster0.2ijbu.mongodb.net/trial2?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
