@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web-Game2011</title>
+</head>
+
+<body>
+    <h2>Create Account</h2>
+    <a href = "/Login">Login</a>
+    <form action="/CreateAccount" method="POST">
+        <label>Username</label>
+        <input type="text" name="userNameC">
+        <br>
+        <label>Password</label>
+        <input type="text" name="passwordC">
+        <br>
+        <button type="submit">Submit</button>
+        </form>
+
+
+
+        <!-- <script>
+            function sleep(milliseconds) {
+                return new Promise(resolve => setTimeout(resolve, milliseconds));
+            }
+            async function fun() {
+                while (true) {
+                    await sleep(1000);
+                    var currentURL = window.location.href
+                    console.log(currentURL)
+                    if (currentURL == "http://" + IP + ":3000") {
+                        window.location.href = "/";
+                    }
+                }
+            }
+            fun();  
+        </script> -->
+</body>
+
+</html>
