@@ -13,23 +13,38 @@ mongoose.connect(process.env.DATABASE_URL)
 
 let a = new Player(10, 10)
 let pos = a.position()
-router.get('/', (req, res) => {
-    res.render('index', { text: pos })
+router.get('/', async (req, res) => {
+    console.log('Someone Logged On')
+    try {
+        const users = await userInfo.find({})
+        let stringUsers = "Users: "
+        for (let i = 0; i < users.length; i++){
+            if (i == users.length-1){
+                stringUsers = stringUsers + users[i].username
+                break
+            }
+            stringUsers = stringUsers + users[i].username + ", "
+        }
+        res.render('layout/index', { text: stringUsers })
+    } catch {
+        
+    } 
 })
 
 router.get('/CreateAccount', (req, res) => {
-    res.render('createAccount.ejs', { userInfo: new userInfo() })
+    res.render('layout/createAccount.ejs', { userInfo: new userInfo() })
 })
 
 router.post('/CreateAccount', async (req, res) => {
     console.log(req.body.userName)
     const user = new userInfo({
         username: req.body.userName,
-        password: req.body.password
+        password: req.body.password,
+        position: new Player(50, 50)
     })
     try {
         await user.save()
-        res.render('index')
+        res.redirect('/')
     } catch (error) {
         console.log(error)
         res.render('errorCreateAccount')

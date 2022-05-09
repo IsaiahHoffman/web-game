@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Player = require('../models/Player')
 
 const userInfo = new mongoose.Schema({
     username: {
@@ -8,6 +9,11 @@ const userInfo = new mongoose.Schema({
 
     password: {
         type: String,
+        required: true
+    },
+
+    position: {
+        type: Object,
         required: true
     }
 })
